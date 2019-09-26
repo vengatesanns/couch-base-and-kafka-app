@@ -1,0 +1,9 @@
+spring:
+  couchbase:
+    bootstrap-hosts: 127.0.0.1
+    bucket:
+      name: team_members
+      password: 1234567890
+  data:
+    couchbase:
+      auto-index: true
