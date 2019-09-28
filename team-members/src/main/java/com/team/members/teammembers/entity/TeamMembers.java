@@ -1,7 +1,5 @@
 package com.team.members.teammembers.entity;
 
-import java.util.List;
-
 import org.springframework.data.couchbase.core.mapping.Document;
 
 import com.couchbase.client.java.repository.annotation.Field;
@@ -21,6 +19,8 @@ public class TeamMembers {
 	@Field
 	private String teamMemberName;
 	@Field
-	private List<Integer> phoneNumbers;
+	private String emailId;
+	@Field
+	private long phoneNumber;
 
 }
