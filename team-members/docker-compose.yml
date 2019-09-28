@@ -1,0 +1,34 @@
+version: '3.0'
+services:
+  couchbase:
+    build:
+      context: .
+      dockerfile: Dockerfile-couchbase
+    image: couchbase
+    container_name: couchbase
+    volumes:
+    - ~/couchbase/node1:/opt/couchbase/var
+    ports:
+    - 8091:8091
+    - 8092:8092
+    - 8093:8093
+    - 11210:11210
+    environment:
+    - COUCHBASE_ADMINISTRATOR_USERNAME=vengatesanns
+    - COUCHBASE_ADMINISTRATOR_PASSWORD=0987654321
+    - COUCHBASE_BUCKET=team_members
+    - COUCHBASE_BUCKET_PASSWORD=666666
+  team_management_app:
+    build:
+      context: .
+      dockerfile: Dockerfile-rest
+    image: teammembers_couchbase
+    container_name: team_members_app
+    environment:
+    - couchbase.host=couchbase
+    - couchbase.bucket.name=team_members
+    - couchbase.bucket.password=666666
+    depends_on:
+    - couchbase
+    ports:
+    - 9003:9003

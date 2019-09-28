@@ -1,9 +1,11 @@
 spring:
   couchbase:
-    bootstrap-hosts: 127.0.0.1
+    bootstrap-hosts: ${couchbase.host}
     bucket:
-      name: team_members
-      password: 1234567890
+      name: ${couchbase.bucket.name}
+      password: ${couchbase.bucket.password}
   data:
     couchbase:
       auto-index: true
+server:
+  port: 9003

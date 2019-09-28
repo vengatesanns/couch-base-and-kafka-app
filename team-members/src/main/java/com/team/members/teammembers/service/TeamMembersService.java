@@ -1,5 +1,7 @@
 package com.team.members.teammembers.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class TeamMembersService {
 
 	public TeamMembers saveTeamDetails(TeamMembers teamMembers) {
 		return teamMembersRepository.save(teamMembers);
+	}
+
+	public List<TeamMembers> getTeamDetails() {
+		return teamMembersRepository.findAllByOrderByIdDesc();
 	}
 
 }

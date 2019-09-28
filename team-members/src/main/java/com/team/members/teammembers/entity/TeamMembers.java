@@ -14,6 +14,7 @@ import lombok.Data;
 public class TeamMembers {
 
 	@Id
+	@Field
 	private long id;
 	@Field
 	private String teamName;
