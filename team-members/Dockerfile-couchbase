@@ -2,3 +2,5 @@
 FROM couchbase AS couchbase
 COPY configure.sh /opt/couchbase
 CMD ["/opt/couchbase/configure.sh"]
+RUN ["chmod", "+x", "/opt/couchbase/configure.sh"]
+RUN ["chmod", "+x", "entrypoint.sh"]

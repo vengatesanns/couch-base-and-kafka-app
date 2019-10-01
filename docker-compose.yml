@@ -1,11 +1,11 @@
 version: "3.0"
 services:
   couchbase:
-    build:
-      context: /home/vengat/My Projects/Couch_Base_App/couch-base-and-kafka-app/team-members/
-      dockerfile: Dockerfile-couchbase
-    image: couchbase
-    container_name: couchbase
+    # build:
+    #  context: /home/vengat/My Projects/Couch_Base_App/couch-base-and-kafka-app/team-members/
+    #  dockerfile: Dockerfile-couchbase
+    image: vengatesan/couchbase_db:latest
+    container_name: couchbase_db
     volumes:
       - ~/couchbase/node1:/opt/couchbase/var
     ports:
@@ -19,11 +19,11 @@ services:
       - COUCHBASE_BUCKET=team_members
       - COUCHBASE_BUCKET_PASSWORD=666666
   team_management_app:
-    build:
-      context: /home/vengat/My Projects/Couch_Base_App/couch-base-and-kafka-app/team-members/
-      dockerfile: Dockerfile-rest
-    image: teammembers_couchbase
-    container_name: team_members_app
+    #build:
+    # context: /home/vengat/My Projects/Couch_Base_App/couch-base-and-kafka-app/team-members/
+    # dockerfile: Dockerfile-rest
+    image: vengatesan/team-app-server:latest
+    container_name: team_app_server
     environment:
       - couchbase.host=couchbase
       - couchbase.bucket.name=team_members
@@ -33,12 +33,12 @@ services:
     ports:
       - 9003:9003
   team_client_ui:
-    build:
-      context: /home/vengat/My Projects/Couch_Base_App/couch-base-and-kafka-app/team-ui-app/
-      dockerfile: Dockerfile
-    image: team_app_ui
-    container_name: team_client_ui
-    depends_on:
-      - team_management_app
+    # build:
+    # context: /home/vengat/My Projects/Couch_Base_App/couch-base-and-kafka-app/team-ui-app/
+    # dockerfile: Dockerfile
+    image: vengatesan/team-app-ui
+    container_name: team_app_ui
+    # depends_on:
+    #   - couchbase
     ports:
       - 80:80
