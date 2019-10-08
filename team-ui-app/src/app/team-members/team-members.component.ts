@@ -45,6 +45,13 @@ export class TeamMembersComponent implements OnInit {
         });
     }
 
+    /*
+     * Clear Forms  
+     */
+    resetForm() {
+        this.registerForm.reset();
+    }
+
 
     /**
      * 
